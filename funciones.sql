@@ -31,3 +31,15 @@ BEGIN
 END//
 
 DELIMITER ;
+
+
+DELIMITER //
+
+CREATE FUNCTION disponible_prestamo(libro INT)
+RETURNS VARCHAR(15)
+
+BEGIN
+    RETURN (SELECT IF(stock > 1, 'Disponible', 'No Disponible') FROM libros WHERE libro_id = libro);
+END//
+
+DELIMITER ;

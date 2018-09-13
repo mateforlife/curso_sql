@@ -165,9 +165,43 @@ WHERE autor_id IN(
     WHERE fecha_publicacion > '2005-12-31'
 );
 
-/* Obtener el id de todos los escritores cuyas ventas en sus libros superen el promedio.
+/* Obtener el id de todos los escritores cuyas ventas en sus libros superen el promedio. */
 
-Obtener el id de todos los escritores cuyas ventas en sus libros sean mayores a cien mil ejemplares.
+SET @promedio_venta = (SELECT AVG(ventas) FROM libros);
+SELECT autor_id
+FROM autores
+WHERE autor_id IN(
+    SELECT autor_id
+    FROM libros
+    WHERE ventas > @promedio_venta
+);
 
-Funciones
-Crear una función la cual nos permita saber si un libro es candidato a préstamo o no. Retornar “Disponible” si el libro posee por lo menos un ejemplar en stock, en caso contrario retornar “No disponible.” */
+/*Obtener el id de todos los escritores cuyas ventas en sus libros sean mayores a cien mil ejemplares. */
+
+SET @meta = 100000;
+SELECT autor_id
+FROM autores
+WHERE autor_id IN(
+    SELECT autor_id
+    FROM libros
+    WHERE ventas > @meta
+);
+
+/* Funciones
+Crear una función la cual nos permita saber si un libro es candidato a préstamo o no. 
+Retornar “Disponible” si el libro posee por lo menos un ejemplar en stock, en caso contrario retornar “No disponible.” */
+
+DELIMITER //
+
+CREATE FUNCTION disponible_prestamo(libro INT)
+RETURNS VARCHAR(15)
+
+BEGIN
+    SET @stock = (SELECT IF(stock > 1, 'Disponible', 'No Disponible')
+                  FROM libros 
+                  WHERE libro_id = libro);
+    RETURN @stock;
+END//
+
+DELIMITER ;
+
