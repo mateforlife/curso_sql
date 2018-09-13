@@ -40,3 +40,14 @@ SELECT CONCAT(nombre, ' ', apellido) AS nombre,
        lu.libro_id
 FROM libros_usuarios lu
     RIGHT JOIN usuarios u ON u.usuario_id = lu.usuario_id;
+
+/* JOIN DE MAS DE DOS TABLAS */
+
+SELECT
+    CONCAT(u.nombre, ' ', u.apellido) AS nombre_usuario,
+    l.titulo,
+    CONCAT(a.nombre, ' ', a.apellido) AS nombre_autor
+FROM usuarios AS u
+    INNER JOIN libros_usuarios AS lu ON u.usuario_id = lu.usuario_id
+    INNER JOIN libros AS l ON lu.libro_id = l.libro_id
+    INNER JOIN autores AS a ON l.autor_id = a.autor_id;
