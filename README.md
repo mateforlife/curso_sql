@@ -1,3 +1,3 @@
 # curso_sql
 
-Contenidos y ejercicios del Curso Profesional de Bases de Datos de codigofacilito.com :)
+Contenidos y ejercicios del Curso Profesional de Bases de Datos de codigofacilito.com basado en MySQL :)
