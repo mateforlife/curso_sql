@@ -1,3 +1,5 @@
+/* SENTENCIAS */
+
 SELECT * FROM libros WHERE titulo IN ('Carrie', 'El Resplandor');
 
 /* consulta para no traer titulos repetidos */

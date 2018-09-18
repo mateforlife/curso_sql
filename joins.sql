@@ -1,5 +1,7 @@
+/* JOINS */
 
-/* INNER JOIN */
+
+/* INNER JOIN ******************************************************************************/
 
 SELECT libros.titulo, CONCAT(autores.nombre, ' ', autores.apellido), libros.fecha_creacion
 FROM libros
@@ -12,8 +14,7 @@ FROM libros
 /* IMPORTANTE!! USANDO USING no se puede condicionar la query usando WHERE */
 
 
-
-/* LEFT JOIN */
+/* LEFT JOIN ********************************************************************************/
 
 SELECT a.seudonimo AS nombre_autor, l.titulo
 FROM libros AS l
@@ -33,15 +34,14 @@ FROM usuarios u
     LEFT JOIN libros_usuarios lu ON u.usuario_id = lu.usuario_id;
 
 
-
-/* RIGHT JOIN */
+/* RIGHT JOIN **************************************************************************************/
 
 SELECT CONCAT(nombre, ' ', apellido) AS nombre,
        lu.libro_id
 FROM libros_usuarios lu
     RIGHT JOIN usuarios u ON u.usuario_id = lu.usuario_id;
 
-/* JOIN DE MAS DE DOS TABLAS */
+/* JOIN DE MAS DE DOS TABLAS ********************************************************************/
 
 SELECT
     CONCAT(u.nombre, ' ', u.apellido) AS nombre_usuario,
@@ -51,3 +51,4 @@ FROM usuarios AS u
     INNER JOIN libros_usuarios AS lu ON u.usuario_id = lu.usuario_id
     INNER JOIN libros AS l ON lu.libro_id = l.libro_id
     INNER JOIN autores AS a ON l.autor_id = a.autor_id;
+    

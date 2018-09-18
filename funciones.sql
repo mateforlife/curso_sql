@@ -1,6 +1,8 @@
 /* MOSTRAR FUNCIONES */
 SHOW FUNCTION STATUS WHERE db=DATABASE();
 
+/* FUNCIONES */
+
 
 /* POR SI HAY ERROR AL CREAR FUNCION */
 SET GLOBAL log_bin_trust_function_creators = 1;

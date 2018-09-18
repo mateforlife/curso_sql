@@ -1,3 +1,5 @@
+/* DEFINICION DE BD Y TABLAS PARA EJERCITAR */
+
 DROP DATABASE IF EXISTS curso_cf;
 CREATE DATABASE curso_cf;
 USE curso_cf;
@@ -46,11 +48,6 @@ CREATE TABLE libros_usuarios(
     fecha_creacion DATETIME DEFAULT CURRENT_TIMESTAMP
 );
 
-INSERT INTO usuarios(nombre, apellido, username, email)
-VALUES ('Alex', 'Rodríguez', 'DinoBass', 'rodriguez.ruiz.alex@gmail.com'),
-       ('Esteban', 'Rodríguez', 'Gay', 'esteban@gmail.com'),
-       ('Alejandro', 'Araos', 'Ela', 'alejandro@gmail.com');
-
 INSERT INTO autores (nombre, apellido, seudonimo, fecha_nacimiento, genero, pais_origen )
   VALUES ('Stephen Edwin', 'King', 'Richard Bachman', '1947-09-27', 'M', 'USA'),
          ('Joanne', 'Rowling', 'J.K Rowling', '1947-09-27', 'F', 'Reino unido'),
@@ -62,7 +59,7 @@ INSERT INTO autores (nombre, apellido, seudonimo, fecha_nacimiento, genero, pais
          ('George Raymond', 'Richard Martin', NULL, '1948-09-20', 'M', 'USA');
 
 INSERT INTO libros(autor_id, titulo, fecha_publicacion)
-VALUES (1, 'Carrie','1974-01-01'),
+VALUES(1, 'Carrie','1974-01-01'),
       (1, 'El misterio de Salmes Lot','1975-01-01'),
       (1, 'El resplando','1977-01-01'),
       (1, 'Rabia','1977-01-01'),
@@ -125,5 +122,11 @@ VALUES (1, 'Carrie','1974-01-01'),
       (8, 'Festin de cuervos','2011-07-12'),
       (8, 'Danza de dragones','2011-07-12');
 
+INSERT INTO usuarios(nombre, apellido, username, email)
+VALUES ('Alex', 'Rodríguez', 'DinoBass', 'rodriguez.ruiz.alex@gmail.com'),
+       ('Esteban', 'Rodríguez', 'Gay', 'esteban@gmail.com'),
+       ('Alejandro', 'Araos', 'Ela', 'alejandro@gmail.com'),
+       ('Test', 'Marquez', 'testusername', 'test@mail.com');
+
 INSERT INTO libros_usuarios(libro_id, usuario_id)
-VALUES (1, 1), (2,2), (3, 3);
+VALUES (1, 1), (2, 2), (3, 3), (4, 1), (5, 1), (10, 2);
