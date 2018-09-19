@@ -56,7 +56,6 @@ WHERE libro_id IN(
 
 /* Obtener el nombre completo de los cinco autores con más préstamos. */
 
-
 SELECT COUNT(l.libro_id) AS libros_prestados, CONCAT(a.nombre, ' ', a.apellido) AS nombre_completo
 FROM autores a
     INNER JOIN libros l ON a.autor_id = l.autor_id

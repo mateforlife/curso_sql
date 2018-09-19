@@ -34,6 +34,7 @@ END//
 
 DELIMITER ;
 
+/*CREAR FUNCION */
 
 DELIMITER //
 
