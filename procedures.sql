@@ -14,23 +14,17 @@ BEGIN
     SET cantidad = (
         SELECT stock FROM libros WHERE libro_id = libro
     );
-
     IF cantidad > 0 THEN
         INSERT INTO libros_usuarios(libro_id, usuario_id)
         VALUES(libro, usuario);
-
         UPDATE libros l SET stock = stock - 1 WHERE libro_id = libro;
-
         SET cantidad = cantidad - 1;
     ELSE
         SET @titulo = (
             SELECT titulo FROM libros WHERE libro_id = libro
         );
-
         SELECT CONCAT('El libro ', @titulo, ' No es posible realizar el prestamo ya que el libro no posee STOCK suficiente') AS mensaje_error;
-
     END IF;
-
     SELECT cantidad AS stock_final_libro;
 END//
 
@@ -74,3 +68,36 @@ END//
 
 DELIMITER ;
 
+/* CREAR PROCEDIMIENTO CON CICLOS WHILE y REPEAT */
+
+/* WHILE */
+DELIMITER //
+
+CREATE PROCEDURE libros_azar()
+BEGIN
+    SET @ciclo = 0;
+    WHILE @ciclo < 5 DO
+        SELECT libro_id, titulo
+        FROM libros
+        ORDER BY RAND() LIMIT 1;
+        SET @ciclo = @ciclo + 1;
+    END WHILE;
+END//
+
+DELIMITER ;
+
+/* REPEAT */
+DELIMITER //
+
+CREATE PROCEDURE libros_azar()
+BEGIN
+    SET @ciclo = 0;
+    REPEAT
+        SELECT libro_id, titulo
+        FROM libros
+        ORDER BY RAND() LIMIT 1;
+        SET @ciclo = @ciclo + 1;
+    UNTIL @ciclo >= 5;
+END//
+
+DELIMITER ;
